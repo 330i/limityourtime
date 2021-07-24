@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "929738053785",
+    "project_id": "limit-your-time-app",
+    "storage_bucket": "limit-your-time-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:929738053785:android:ab3908e089ff9f807e0008",
+        "android_client_info": {
+          "package_name": "org.crhsidea.limityourtime"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "929738053785-2s0lk6faggrn7ifbrc92ngbj2i0fc2u6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBLyS6kKJoM6JQOD0mKrd4P2strNl9sHqk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "929738053785-2s0lk6faggrn7ifbrc92ngbj2i0fc2u6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
