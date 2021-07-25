@@ -27,16 +27,18 @@ class hoursInput extends StatelessWidget {
               width: 50,
               child: Neumorphic(
                 child: TextField(
-                    textAlign: TextAlign.center,
-                    decoration: InputDecoration(
-                      filled: true,
-                      hintText: limit,
-                      contentPadding: EdgeInsets.all(18),
-                    ),
-                    keyboardType: TextInputType.number,
-                    inputFormatters: <TextInputFormatter>[
-                      FilteringTextInputFormatter.digitsOnly
-                    ]
+                  textAlign: TextAlign.center,
+                  decoration: InputDecoration(
+                    filled: true,
+                    hintText: limit,
+                    contentPadding: EdgeInsets.all(15),
+                    counterText: '',
+                  ),
+                  keyboardType: TextInputType.number,
+                  inputFormatters: <TextInputFormatter>[
+                    FilteringTextInputFormatter.digitsOnly
+                  ],
+                  maxLength: 2,
                 ),
               ),
             )
