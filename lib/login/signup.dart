@@ -176,6 +176,8 @@ class _SignupState extends State<Signup> {
                           'uid': value.user!.uid,
                           'weekTime': [0,0,0,0,0,0,0],
                           'weekLimit': [0,0,0,0,0,0,0],
+                          'breaks': [0,0,0,0,0,0,0],
+                          'lastStart': null,
                         }).then((value) {
                           Navigator.of(context).pushAndRemoveUntil(CupertinoPageRoute(builder: (context) => HomePage()),ModalRoute.withName('/login'));
                         });
