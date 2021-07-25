@@ -2,6 +2,8 @@ import cv2 as cv
 from datetime import datetime
 from datetime import timedelta
 from tkinter import *
+import tkinter.simpledialog
+import tkinter.messagebox
 window = Tk()
 video =cv.VideoCapture(0)
 window.wm_title("Limit Your Time")
@@ -14,6 +16,12 @@ startTime=[]
 endTime=[]
 breaks =[]
 activeStatus = [True]
+def displayTime(seconds):
+    hours=int(seconds/3600)
+    minutes=int((seconds-hours*3600)/60)
+    if seconds-hours*3600-minutes*60>=30:
+        minutes+=1
+    return str(hours)+" "+str(minutes)
 def startLoop():
     l1.config(text='Session Started')
     global keepGoing
@@ -65,16 +73,20 @@ def endLoop():
             breaks.append(True)
     video.release()
     cv.destroyAllWindows()
-    print('Total Time: '+str(totalSeconds))
-    print('Number of breaks: '+str(len(breaks)))
+    breaksNumber=len(breaks)
+    timeOutput=displayTime(totalSeconds)
+    spaceIndex=timeOutput.find(' ')
+    hoursNumber=timeOutput[0:spaceIndex]
+    minutesNumber=timeOutput[(spaceIndex+1):len(timeOutput)]
+    infoStatement='Hours: '+str(hoursNumber)+' Minutes: '+str(minutesNumber)+ ' Breaks: '+str(len(breaks))
+    print(infoStatement)
 startButton=Button(window, text="Start", width=15, command=startLoop)
 startButton.grid(row=0, column=0)
 pauseButton = Button(window, text='Pause', width=15, command=pauseLoop)
 pauseButton.grid(row=0, column=1)
 endButton=Button(window, text="End", width=15, command=endLoop)
 endButton.grid(row=0, column=2)
-l1=Label(window, text="")
+l1=Label(window, text="Press Start")
 l1.grid(row=1, column=0, columnspan=3)
 window.after(1000, main)
 window.mainloop()
-    
