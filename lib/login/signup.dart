@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:limityourtime/login/signin.dart';
+import 'package:limityourtime/pages/home_page.dart';
 import 'package:page_transition/page_transition.dart';
 
 class Signup extends StatefulWidget {
@@ -117,6 +118,7 @@ class _SignupState extends State<Signup> {
                         width: MediaQuery.of(context).size.width-111,
                         child: TextField(
                           controller: passwordController,
+                          obscureText: true,
                           decoration: InputDecoration(
                             hintText: 'Password',
                             border: InputBorder.none,
@@ -174,6 +176,8 @@ class _SignupState extends State<Signup> {
                           'uid': value.user!.uid,
                           'weekTime': [0,0,0,0,0,0,0],
                           'weekLimit': [0,0,0,0,0,0,0],
+                        }).then((value) {
+                          Navigator.of(context).pushAndRemoveUntil(CupertinoPageRoute(builder: (context) => HomePage()),ModalRoute.withName('/login'));
                         });
                       });
                     },

@@ -1,9 +1,9 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:limityourtime/login/signup.dart';
+import 'package:limityourtime/pages/home_page.dart';
 import 'package:page_transition/page_transition.dart';
 
 class Signin extends StatefulWidget {
@@ -117,6 +117,7 @@ class _SigninState extends State<Signin> {
                         width: MediaQuery.of(context).size.width-111,
                         child: TextField(
                           controller: passwordController,
+                          obscureText: true,
                           decoration: InputDecoration(
                             hintText: 'Password',
                             border: InputBorder.none,
@@ -167,7 +168,9 @@ class _SigninState extends State<Signin> {
                       ),
                     ),
                     onPressed: () {
-                      FirebaseAuth.instance.signInWithEmailAndPassword(email: emailController.text, password: passwordController.text);
+                      FirebaseAuth.instance.signInWithEmailAndPassword(email: emailController.text, password: passwordController.text).then((value) {
+                        Navigator.of(context).pushAndRemoveUntil(CupertinoPageRoute(builder: (context) => HomePage()),ModalRoute.withName('/login'));
+                      });
                     },
                   ),
                 ),
