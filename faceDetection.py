@@ -1,10 +1,12 @@
 import cv2 as cv
 from datetime import datetime
+from datetime import timedelta
 from tkinter import *
 window = Tk()
 video =cv.VideoCapture(0)
 window.wm_title("Limit Your Time")
 frontalFaceDetector=cv.CascadeClassifier('haarcascade_frontalface_default.xml')
+minBreakTime=5#in minutes
 keepGoing=True
 sessionStoped=False
 totalSeconds=0
@@ -38,6 +40,8 @@ def main():
                 pass
             elif (not active) and (not facePresent):
                 pass
+            elif len(startTime)==0:
+                pass
             elif active and (not facePresent) and (rightNow-startTime[-1])>timedelta(seconds=10):
                 activeStatus.append(False)
                 endTime.append(datetime.now())
@@ -56,6 +60,9 @@ def endLoop():
     for (start, end) in zip(startTime, endTime):
         difference=end-start
         totalSeconds+=difference.total_seconds()
+    for i in range(0, len(endTime)-2):
+        if startTime[i+1]-startTime[i]>timedelta(minutes=minBreakTime):
+            breaks.append(True)
     video.release()
     cv.destroyAllWindows()
     print('Total Time: '+str(totalSeconds))
@@ -70,3 +77,4 @@ l1=Label(window, text="")
 l1.grid(row=1, column=0, columnspan=3)
 window.after(1000, main)
 window.mainloop()
+    
