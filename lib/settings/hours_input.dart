@@ -2,10 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
+
 class hoursInput extends StatelessWidget {
   String DisplayText;
   String limit;
-  hoursInput(this.DisplayText, this.limit);
+  TextEditingController limitController = new TextEditingController();
+  hoursInput(this.DisplayText, this.limit, this.limitController);
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -28,6 +30,7 @@ class hoursInput extends StatelessWidget {
               child: Neumorphic(
                 child: TextField(
                   textAlign: TextAlign.center,
+                  controller: limitController,
                   decoration: InputDecoration(
                     filled: true,
                     hintText: limit,
