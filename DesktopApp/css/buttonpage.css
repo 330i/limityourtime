@@ -1,0 +1,34 @@
+.genericbutton {
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 17px;
+    line-height: 25px;
+    text-align: center;
+    letter-spacing: 0.05em;
+    color: #000;
+    background: transparent;
+    font-weight: normal;
+    text-transform: uppercase;
+    transition: all 0.2s ease-in-out;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #000;
+    width: 223px;
+    height: 50px;
+}
+
+.genericinput {
+    padding: 12px 20px;
+    margin-bottom: 20px;
+}
+
+.genericbutton:hover {
+    background: #000;
+    color: #fff;
+}
+
+.columndiv {
+    flex-direction: column;
+    inline-size: min-content;
+}
